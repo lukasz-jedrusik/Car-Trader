@@ -5,6 +5,7 @@ using CarTrader.Services.Workflow.Infrastructure.DependencyContainer;
 using CarTrader.Services.Workflow.Infrastructure.Extensions.EfCore;
 using CarTrader.Services.Workflow.Infrastructure.Extensions.KeycloakAuth;
 using CarTrader.Services.Workflow.Infrastructure.Extensions.MediatR;
+using CarTrader.Services.Workflow.Infrastructure.Extensions.RabbitMq;
 using CarTrader.Services.Workflow.Infrastructure.Extensions.Swagger;
 using NLog.Web;
 
@@ -30,6 +31,7 @@ var builder = WebApplication.CreateBuilder(args);
         .AddSwagger()
         .AddKeycloakAuthorization(builder.Configuration)
         .AddMediatR()
+        .AddRabbitMq(builder.Configuration)
         .AddApplication();
 
     builder.Services.AddHealthChecks();

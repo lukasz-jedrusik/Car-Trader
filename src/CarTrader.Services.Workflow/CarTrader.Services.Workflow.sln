@@ -11,10 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarTrader.Services.Workflow
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarTrader.Services.Workflow.Infrastructure", "CarTrader.Services.Workflow.Infrastructure\CarTrader.Services.Workflow.Infrastructure.csproj", "{326D550F-0A83-44E8-B6B1-3EDE6D290D93}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CarTrader.Services.Workflow.Tests", "CarTrader.Services.Workflow.Tests", "{C5EEEBB0-588C-4E5F-9C73-B6FAAA70D99E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarTrader.Services.Workflow.UnitTests", "CarTrader.Services.Workflow.Tests\CarTrader.Services.Workflow.UnitTests\CarTrader.Services.Workflow.UnitTests.csproj", "{5CB676D5-6163-4043-A982-97AC22378D5D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,12 +36,5 @@ Global
 		{326D550F-0A83-44E8-B6B1-3EDE6D290D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{326D550F-0A83-44E8-B6B1-3EDE6D290D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{326D550F-0A83-44E8-B6B1-3EDE6D290D93}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CB676D5-6163-4043-A982-97AC22378D5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CB676D5-6163-4043-A982-97AC22378D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CB676D5-6163-4043-A982-97AC22378D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CB676D5-6163-4043-A982-97AC22378D5D}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{5CB676D5-6163-4043-A982-97AC22378D5D} = {C5EEEBB0-588C-4E5F-9C73-B6FAAA70D99E}
 	EndGlobalSection
 EndGlobal

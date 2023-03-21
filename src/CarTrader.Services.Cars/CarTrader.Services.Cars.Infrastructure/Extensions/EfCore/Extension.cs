@@ -9,8 +9,7 @@ namespace CarTrader.Services.Cars.Infrastructure.Extensions.EfCore
         public static IServiceCollection AddEfCore(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<DataContext>(x =>
-                x.UseSqlServer(configuration["CPCLEANAPI_CONNECTION_STRING"]))
-                ;
+                x.UseSqlServer(configuration.GetConnectionString("CarTraderCarsDatabase")));
 
             return services;
         }

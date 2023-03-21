@@ -1,21 +1,26 @@
 using System.Text.Json.Serialization;
+using CarTrader.Services.Cars.Api.Endpoints;
 using CarTrader.Services.Cars.Api.Middleware;
 using CarTrader.Services.Cars.Application.Mappings;
 using CarTrader.Services.Cars.Infrastructure.DependencyContainer;
 using CarTrader.Services.Cars.Infrastructure.Extensions.EfCore;
+using CarTrader.Services.Cars.Infrastructure.Extensions.FluentValidation;
 using CarTrader.Services.Cars.Infrastructure.Extensions.KeycloakAuth;
 using CarTrader.Services.Cars.Infrastructure.Extensions.MediatR;
+using CarTrader.Services.Cars.Infrastructure.Extensions.RabbitMq;
 using CarTrader.Services.Cars.Infrastructure.Extensions.Swagger;
 using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 {
     builder.Services
-        .AddControllers(x => x.AllowEmptyInputInBodyModelBinding = true)
-        .AddJsonOptions(x => x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+        .AddControllers(x => x.AllowEmptyInputInBodyModelBinding = true);
+
+    builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
+        options.SerializerOptions.Converters.Add(new JsonStringEnumConverter())
+        );
 
     builder.Logging.ClearProviders();
     builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
@@ -29,8 +34,11 @@ var builder = WebApplication.CreateBuilder(args);
         .AddEndpointsApiExplorer()
         .AddSwagger()
         .AddKeycloakAuthorization(builder.Configuration)
+        .AddFluentValidation()
         .AddMediatR()
-        .AddApplication();
+        .AddRabbitMq(builder.Configuration)
+        .AddApplication()
+        ;
 
     builder.Services.AddHealthChecks();
 }
@@ -38,7 +46,6 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
 {
     if (app.Environment.IsDevelopment())
     {
@@ -54,6 +61,8 @@ var app = builder.Build();
     app.MapControllers();
 
     app.MapHealthChecks("/health");
+
+    app.AddCarsEndpoints();
 
     app.Run();
 }

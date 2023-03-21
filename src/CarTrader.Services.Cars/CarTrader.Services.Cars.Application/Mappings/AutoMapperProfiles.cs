@@ -1,4 +1,6 @@
 using AutoMapper;
+using CarTrader.Services.Cars.Application.DataTransferObjects;
+using CarTrader.Services.Cars.Domain.Models;
 
 namespace CarTrader.Services.Cars.Application.Mappings
 {
@@ -6,6 +8,7 @@ namespace CarTrader.Services.Cars.Application.Mappings
     {
         public AutoMapperProfiles()
         {
+            CreateMap<Car, CarDto>().ReverseMap();
         }
     }
 }

@@ -50,22 +50,6 @@ namespace CarTrader.Services.Workflow.Api.Middleware
 
                 switch(error)
                 {
-                    case InvalidPermissionsException:
-                        // Invalid permissions error
-                        response.StatusCode = (int)HttpStatusCode.Forbidden;
-                        problemDetails.Title = "Forbidden";
-                        problemDetails.Type = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3";
-                        problemDetails.Status = (int)HttpStatusCode.Forbidden;
-                        break;
-
-                    case CarTrader.Services.WorkflowException:
-                        // Other CarTrader.Services.Workflow errors and argument null
-                        response.StatusCode = (int)HttpStatusCode.BadRequest;
-                        problemDetails.Title = "Bad Request";
-                        problemDetails.Type = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1";
-                        problemDetails.Status = (int)HttpStatusCode.BadRequest;
-                        break;
-
                     default:
                         // Unhandled errors
                         response.StatusCode = (int)HttpStatusCode.InternalServerError;

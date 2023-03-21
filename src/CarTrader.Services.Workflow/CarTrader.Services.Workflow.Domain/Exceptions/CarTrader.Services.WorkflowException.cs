@@ -2,21 +2,15 @@ using System.Runtime.Serialization;
 
 namespace CarTrader.Services.Workflow.Domain.Exceptions
 {
-    [Serializable]
-    public abstract class CarTrader.Services.WorkflowException : Exception
+    public abstract class CarTraderWorkflowException : Exception
     {
-        protected CarTrader.Services.WorkflowException() {}
+        protected CarTraderWorkflowException() {}
 
-        protected CarTrader.Services.WorkflowException(string message) : base(message)
+        protected CarTraderWorkflowException(string message) : base(message)
         {
         }
 
-        protected CarTrader.Services.WorkflowException(SerializationInfo serializationInfo, StreamingContext streamingContext)
-            : base(serializationInfo, streamingContext)
-        {
-        }
-
-        protected CarTrader.Services.WorkflowException(string message, Exception innerException) : base(message, innerException)
+        protected CarTraderWorkflowException(string message, Exception innerException) : base(message, innerException)
         {
         }
     }

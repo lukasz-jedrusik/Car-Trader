@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using CarTrader.Services.Workflow.Application.Services;
 using CarTrader.Services.Workflow.Application.Interfaces.Services;
+using CarTrader.Services.Workflow.Infrastructure.Services;
 
 namespace CarTrader.Services.Workflow.Infrastructure.DependencyContainer
 {
@@ -10,7 +11,9 @@ namespace CarTrader.Services.Workflow.Infrastructure.DependencyContainer
         {
             // Repositories
 
-            // Services
+            // Services 
+            services.AddSingleton<IMessageSubscriber, MessageSubscriber>();
+            services.AddHostedService<MessagingBackgroundService>();
 
             // Queue
             services.AddHostedService<QueuedHostedService>();
